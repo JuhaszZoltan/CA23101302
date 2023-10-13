@@ -16,6 +16,11 @@ namespace CA23101302
         public (int AvgMin, int AvgMax) Lifespan { get; set; }
         public string Origin { get; set; }
 
+
+        public Dog()
+        {
+            
+        }
         public Dog(string datarow)
         {
             string[] splts = datarow.Split(';');
