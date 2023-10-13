@@ -126,8 +126,18 @@
 
             var f16 = dogs.Any(d => d.Height > 984 * 12);
             Console.WriteLine($"is there a very tall dog?: {(f16 ? "yes" : "no")}");
+
             var f17 = dogs.Any(d => d.Origin == "Germany");
             Console.WriteLine($"Es gibt eine deutsch Hund?: {(f17 ? "JA!!!" : "NEIN!!!")}");
+
+            //orderby/orderbydescending
+            //groupby
+            //select/selectmany
+            //where
+            //all
+
+            //+ limit
+            //+ distinct
         }
 
         private static List<Dog> GetDogsFromFile(string filename)
