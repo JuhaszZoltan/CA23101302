@@ -1,0 +1,29 @@
+Breed Name;Average Weight (lbs);Average Height (inches);Temperament;Lifespan (years);Origin
+Labrador Retriever;70;22.5;Friendly, outgoing, and high-spirited;10-12;Canada
+German Shepherd;75;24.0;Intelligent, confident, and loyal;9-13;Germany
+Golden Retriever;65;23.5;Intelligent, friendly, and devoted;10-12;United Kingdom
+Bulldog;50;14.0;Docile, willful, and friendly;8-10;United Kingdom
+Beagle;20;13.0;Friendly, curious, and merry;10-15;United Kingdom
+Boxer;70;23.0;Playful, energetic, and loyal;10-12;Germany
+Dachshund;12;8.0;Clever, lively, and playful;12-16;Germany
+Poodle;45;15.0;Intelligent, active, and alert;10-15;Germany
+Rottweiler;95;24.0;Loyal, confident, and fearless;8-10;Germany
+Yorkshire Terrier;7;7.0;Bold, affectionate, and sprightly;11-15;United Kingdom
+Doberman Pinscher;80;26.0;Alert, loyal, and fearless;10-13;Germany
+Bulldog;50;14.0;Docile, willful, and friendly;8-10;United Kingdom
+Siberian Husky;50;21.5;Outgoing, alert, and gentle;12-15;Russia
+Great Dane;140;32.0;Gentle, friendly, and dependable;7-10;Germany
+Shih Tzu;10;9.0;Outgoing, affectionate, and friendly;10-18;China
+Pug;14;12.0;Charming, mischievous, and loving;12-15;China
+Chihuahua;6;6.0;Charming, graceful, and sassy;14-17;Mexico
+Bichon Frise;12;11.0;Playful, curious, and peppy;12-15;Belgium
+Pomeranian;5;7.0;Curious, alert, and extroverted;12-16;Poland
+Border Collie;45;20.5;Alert, intelligent, and responsive;10-17;United Kingdom
+Shiba Inu;20;16.0;Alert, confident, and courageous;12-15;Japan
+Cocker Spaniel;30;15.0;Smart, gentle, and affectionate;10-14;United Kingdom
+Rottweiler;95;24.0;Loyal, confident, and fearless;8-10;Germany
+Chow Chow;70;20.0;Admirable, dignified, and aloof;9-12;China
+Dalmatian;55;22.0;Outgoing, friendly, and dignified;10-13;Croatia
+Papillon;8;11.0;Intelligent, alert, and friendly;13-16;France
+Collie;55;26.0;Tenacious, intelligent, and gentle;10-14;United Kingdom
+Staffordshire Bull Terrier;37;14.0;Fearless, affectionate, and loyal;12-14;United Kingdom
