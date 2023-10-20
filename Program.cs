@@ -125,19 +125,134 @@
             #endregion
 
             var f16 = dogs.Any(d => d.Height > 984 * 12);
-            Console.WriteLine($"is there a very tall dog?: {(f16 ? "yes" : "no")}");
+            Console.WriteLine($"Is there a very tall dog?: {(f16 ? "yes" : "no")}");
 
             var f17 = dogs.Any(d => d.Origin == "Germany");
             Console.WriteLine($"Es gibt eine deutsch Hund?: {(f17 ? "JA!!!" : "NEIN!!!")}");
 
             //orderby/orderbydescending
+
+            //kutyusok súlyuk szerint növekvűbe sorba rendezve
+            var f18 = dogs.OrderBy(d => d.Weight);
+
+            //foreach (var dog in f18) Console.WriteLine($"{dogs.IndexOf(dog)}. {dog.Name} {dog.Weight} font");
+
+            //rendezés név szerint csökkenőbe
+            var f19 = dogs.OrderByDescending(d => d.Name);
+            //foreach (var dog in f19) Console.WriteLine(dog.Name);
+
             //groupby
+            //csoportosítás származási ország szerint
+
+            var f20 = dogs.GroupBy(d => d.Origin);
+            foreach (var group in f20)
+            {
+                Console.WriteLine(group.Key);
+                foreach (Dog element in group)
+                {
+                    Console.WriteLine($"\t{element.Name}");
+                }
+            }
+
+            foreach (var group in f20)
+            {
+                Console.WriteLine($"\t{group.Key}: {group.Count()} db");
+            }
+
+            //azon orszákok listája, ahonnan több, mint 1 kutya származik + mennyi kutya származik
+            var f21 = dogs
+                .GroupBy(d => d.Origin)
+                .Where(g => g.Count() > 1)
+                .ToDictionary(k => k.Key, v => v.Count());
+            Console.WriteLine("more than one dog p contry");
+            foreach (var kvp in f21)
+            {
+                Console.WriteLine($"\n{kvp.Key}: {kvp.Value}");
+            }
+
+            //kicsi kutyák "listája"
+            var f23 = dogs.Where(d => d.Weight < 10);
+
+
             //select/selectmany
-            //where
+            //kicsi kutyák (neveinek, tömegeinek) "listája"
+            var f22 = dogs
+                .Where(d => d.Weight < 10)
+                .Select(d => (d.Name, d.Weight));
+
+            //máshogy ugyan az (alt. syntax)
+            var f22b = from d in dogs
+                       where d.Weight < 10
+                       select (d.Name, d.Weight);
+
+            Console.WriteLine("small dog names:");
+            foreach (var (n, w) in f22) Console.WriteLine($"{n}: {w} font");
+
+            #region tuple kitérő
+            //tuple
+            //Tuple<int, int> koordinatak = new Tuple<int, int>(20, 30);
+            //(int X, int Y) koordinata =  (10, 20);
+            //Console.WriteLine(koordinata.X);
+            //Console.WriteLine(koordinata.Y);
+
+            //(string, int) osztaly = ("10A", 31);
+            //Console.WriteLine(osztaly.Item1);
+            //Console.WriteLine(osztaly.Item2);
+            #endregion
             //all
+            //igaz-e, hogy minden kutya legalább 5 évig él (várhatóan)
+            var f24 = dogs.All(d => d.Lifespan.AvgMin >= 5);
+            if(f24) Console.WriteLine($"all dogs live at least 5 years");
+            else Console.WriteLine("some dogs die earlyer :(");
+
+            //select many: olyan propertynél érdemes
+            //(azaz akkor van értelme...) használni, ami
+            //összetett tulajdonság (azaz valamilyen kollekció)
+            var f25 = dogs
+                .SelectMany(d => d.Temperament)
+                //Distinct: kiszűri az ismétlődéseket
+                .Distinct()
+                .OrderBy(t => t);
+            foreach (var t in f25) Console.WriteLine($"\t - {t}");
 
             //+ limit
-            //+ distinct
+            //Orderby > Tolist() > ~foreach~ for > ~i < count~ lit
+            //a 3 legnagyobb testű kutya neve:
+            var f26 = dogs
+                .OrderByDescending(d => d.Weight)
+                .DistinctBy(d => d.Name)
+                .ToList();
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($"{i+1}.: {f26[i].Name} ({f26[i].Weight} font)");
+            }
+
+            //német [10, 20] font közötti kutyák
+            //súly szerint növekvőbe rendezve
+            //csak a fajta és a súly (tuple)
+            var f27 = dogs
+                .Where(d => d.Origin == "Germany" || d.Origin == "Great Britany")
+                .Where(d => d.Weight >= 10 && d.Weight <= 40)
+                .OrderBy(d => d.Weight)
+                .Select(d => (d.Name, d.Weight))
+                .ToList();
+            if (f27.Count != 0)
+            {
+                Console.WriteLine($"kutyák száma: {f27.Count}");
+                foreach (var (n, s) in f27)
+                {
+                    Console.WriteLine($"{n} ({s})");
+                }
+            }
+            //barátságos, angol
+            var f28 = dogs.Where(d => d.Temperament.Contains("friendly") && d.Origin.StartsWith("United"));
+            Console.WriteLine("barácságosh brit kutákok");
+            foreach (var kuty in f28)
+            {
+                Console.WriteLine($"{kuty.Name}");
+            }
+
+
         }
 
         private static List<Dog> GetDogsFromFile(string filename)
